@@ -15,7 +15,7 @@ class cliente {
 }
 
 
-const carteraClientes = JSON.parse(sessionStorage.getItem("carteraClientes")) || [];
+const carteraClientes = JSON.parse(localStorage.getItem("carteraClientes")) || [];
 
 let stock_melena = 5.5 ; // Stock inicial del hongo "melena de león" en el local en kilogramos
 let stock_reishi = 5.5 ; // Stock inicial del hongo "reishi" en el local en kilogramos
@@ -288,7 +288,7 @@ miFormulario.addEventListener("submit", (e) =>{
 		//Guardo la base de datos de clientes en el session storage	
 		
 		const carteraClientesJson = JSON.stringify(carteraClientes);
-		sessionStorage.setItem("carteraClientes", carteraClientesJson);
+		localStorage.setItem("carteraClientes", carteraClientesJson);
 		
 
 		Swal.fire({
@@ -304,8 +304,8 @@ miFormulario.addEventListener("submit", (e) =>{
 
 let btnBuscar = document.getElementById("btnBuscar");
 btnBuscar.addEventListener ("click", () => {
-	let busqueda = document.getElementById ("apellido_cliente").value;
-	console.log(busqueda);  //Me devuelve vacío
+	let busqueda = document.getElementById ("buscar_apellido").value.toUpperCase();
+	console.log(busqueda); 
 	
 	//Recupero el JSON
 	let recupero_clientes = localStorage.getItem("carteraClientes");
