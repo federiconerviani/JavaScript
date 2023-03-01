@@ -311,7 +311,7 @@ btnBuscar.addEventListener ("click", () => {
 	let recupero_clientes = localStorage.getItem("carteraClientes");
 	recupero_clientes = JSON.parse(recupero_clientes);
 
-	const resultado = recupero_clientes.filter((el) => el.apellido.includes(busqueda));
+	const resultado = recupero_clientes.filter((el) => el.apellido.includes(busqueda).toUpperCase());
 	console.log(resultado);
 
 
