@@ -7,10 +7,10 @@
 //Voy a usar una clase de objetos para capturar datos de clientes
 class cliente {
 	constructor(nombre, apellido, telefono, email) {
-		this.nombre=nombre;
-		this.apellido=apellido;
+		this.nombre=nombre.toUpperCase();
+		this.apellido=apellido.toUpperCase();
 		this.telefono=telefono;
-		this.email=email;
+		this.email=email.toUpperCase();
 	}
 }
 
@@ -288,7 +288,7 @@ miFormulario.addEventListener("submit", (e) =>{
 		//Guardo la base de datos de clientes en el session storage	
 		
 		const carteraClientesJson = JSON.stringify(carteraClientes);
-		localStorage.setItem("carteraClientes", carteraClientesJson);
+		sessionStorage.setItem("carteraClientes", carteraClientesJson);
 		
 
 		Swal.fire({
@@ -308,13 +308,11 @@ btnBuscar.addEventListener ("click", () => {
 	console.log(busqueda); 
 	
 	//Recupero el JSON
-	let recupero_clientes = localStorage.getItem("carteraClientes");
+	let recupero_clientes = sessionStorage.getItem("carteraClientes");
 	recupero_clientes = JSON.parse(recupero_clientes);
 
-	const resultado = recupero_clientes.filter((el) => el.apellido.includes(busqueda).toUpperCase());
+	const resultado = recupero_clientes.filter((el) => el.apellido.includes(busqueda));
 	console.log(resultado);
-
-
 })
 
 
