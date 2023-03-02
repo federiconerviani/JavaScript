@@ -19,7 +19,8 @@ const carteraClientes = JSON.parse(localStorage.getItem("carteraClientes")) || [
 
 let stock_melena = 5.5 ; // Stock inicial del hongo "melena de león" en el local en kilogramos
 let stock_reishi = 5.5 ; // Stock inicial del hongo "reishi" en el local en kilogramos
-let ventas=0;
+
+let ventas=0; //CONTADOR DE LAS VENTAS DEL DÍA
 
 function kiloAgramo_melena (x,y){
 	stock_melena = Number ((x - y*0.001).toFixed(2));
@@ -66,28 +67,27 @@ boton.addEventListener("click", () => {
 						console.log (cant_melena);
 						console.log (stock_melena);
 						
+						ventas += 1;
+						
+						//SWEET ALERT PARA MOSTRAR UN RESUMEN Y CONFIRMACIÓN DE LOS DATOS REGISTRADOS
+						
+						let guardar = document.getElementById("guardar");
+						guardar.addEventListener('click', () => {
+							
+							Swal.fire({
+								position: 'center',
+								icon: 'success',
+								title: 'Se ha registrado el pedido',
+								showConfirmButton: false,
+								timer: 2500,
+							})
+							
+						})
+						
 						if (stock_melena <= 5) 
 						{
 							alert(`Advertencia: El stock de Melena de león es bajo. Reponer stock. \n Stock de Melena de león restante: ${stock_melena}kg`);
 						}
-						ventas += 1;
-
-				//SWEET ALERT PARA MOSTRAR UN RESUMEN Y CONFIRMACIÓN DE LOS DATOS REGISTRADOS
-				
-				let guardar = document.getElementById("guardar");
-				guardar.addEventListener('click', () => {
-					
-					Swal.fire({
-						position: 'center',
-						icon: 'success',
-						title: 'Se ha registrado el pedido',
-						showConfirmButton: false,
-						timer: 3500,
-						width: '25%'
-					})
-					
-				})
-				
 			}
 					else 
 					{
@@ -126,29 +126,28 @@ boton.addEventListener("click", () => {
 						console.log (cant_reishi);
 						console.log (stock_reishi);
 
+						//SWEET ALERT PARA MOSTRAR UN RESUMEN Y CONFIRMACIÓN DE LOS DATOS REGISTRADOS
+		
+						let guardar = document.getElementById("guardar");
+						guardar.addEventListener('click', () => {
+		   
+							Swal.fire({
+								position: 'center',
+								icon: 'success',
+								title: 'Se ha registrado el pedido',
+								showConfirmButton: false,
+								timer: 2500,
+							})
+
+						})
+
 						if (stock_reishi <= 5) 
 						{
 							alert(`Advertencia: El stock de Reishi es bajo. Reponer stock. \n Stock de Reishi restante: ${stock_reishi}kg`);
 						}
 						ventas += 1;
-
-				//SWEET ALERT PARA MOSTRAR UN RESUMEN Y CONFIRMACIÓN DE LOS DATOS REGISTRADOS
-
-				let guardar = document.getElementById("guardar");
-				guardar.addEventListener('click', () => {
-   
-					Swal.fire({
-						position: 'center',
-						icon: 'success',
-						title: 'Se ha registrado el pedido',
-						showConfirmButton: false,
-						timer: 3500,
-						width: '25%'
-					})
-					
-				})
-
 					}
+
 					else 
 					{
 					alert("Ingrese alguno de los valores mostrados en la lista");
@@ -207,30 +206,27 @@ boton.addEventListener("click", () => {
 											 <button id="guardar">Guardar</button>`;
 						document.body.append(cantidad);
 
-
+						ventas += 1;
+						
+						//SWEET ALERT PARA MOSTRAR UN RESUMEN Y CONFIRMACIÓN DE LOS DATOS REGISTRADOS
+						
+						let guardar = document.getElementById("guardar");
+						guardar.addEventListener('click', () => {
+							
+							Swal.fire({
+								position: 'center',
+								icon: 'success',
+								title: 'Se ha registrado el pedido',
+								showConfirmButton: false,
+								timer: 2500,
+							})
+					
+						})
+						
 						if (stock_reishi <= 5) 
 						{
 							alert(`Advertencia: El stock de Reishi es bajo. Reponer stock. \n Stock de Reishi restante: ${stock_reishi}kg`);
 						}
-
-						ventas += 1;
-
-				//SWEET ALERT PARA MOSTRAR UN RESUMEN Y CONFIRMACIÓN DE LOS DATOS REGISTRADOS
-
-				let guardar = document.getElementById("guardar");
-				guardar.addEventListener('click', () => {
-   
-					Swal.fire({
-						position: 'center',
-						icon: 'success',
-						title: 'Se ha registrado el pedido',
-						showConfirmButton: false,
-						timer: 3500,
-						width: '25%'
-					})
-					
-				})
-						
 					}
 					else 
 					{
@@ -313,6 +309,8 @@ btnBuscar.addEventListener ("click", () => {
 
 	const resultado = recupero_clientes.filter((el) => el.apellido.includes(busqueda));
 	console.log(resultado);
+
+
 })
 
 
