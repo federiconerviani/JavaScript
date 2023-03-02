@@ -315,6 +315,7 @@ btnBuscar.addEventListener ("click", () => {
 	console.log(resultado);
 })
 
+console.log(resultado);
 
 
 
