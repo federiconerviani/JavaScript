@@ -1,0 +1,66 @@
+git <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.all.min.js"></script>
+    
+    <title>Control de Stock</title>
+</head>
+<body>
+    <h1>Sistema de Control de Stock</h1>
+    
+<!--Agregar clientes a la base de datos-->    
+
+    <h2>Agregar cliente a base de datos</h2>
+        <form action="" id="formCliente">
+            <div>
+                <label for="">Nombre: </label>
+                <input type="text" id="nombre_cliente">
+            </div>
+            <div>
+                <label for="">Apellido: </label>
+                <input type="text" id="apellido_cliente">
+            </div>
+            <div>
+                <label for="">Teléfono: </label>
+                <input type="tel" id="telefono_cliente">
+            </div>
+            <div>
+                <label for="">E-mail: </label>
+                <input type="email" id="email_cliente">
+            </div>
+            <button type="submit" id="botonRegistrar3">Registrar Usuario</button>
+        </form>
+
+<!--Barra de búsqueda de clientes en la base de datos-->    
+    <h2>Buscar cliente en la base de datos</h2>
+    <label for="">Apellido del Cliente</label>
+    <input type="text" id="buscar_apellido">
+    <button id="btnBuscar">Buscar</button>
+
+
+
+<!--Menú para cargar datos de órdenes de pedido-->
+    <h2>Carga de datos</h2>
+    <h4>Ingrese una de las siguientes opciones</h4>
+    <ol>
+        <li>Para Melena de león</li>
+        <li>Para Reishi</li>
+        <li>Para Melena de león y Reishi</li>
+    </ol>
+    <label for="">Número de opción: </label>
+    <input type="text" id="opcion_menu">
+
+    <button id="boton_registrar">Registrar</button>
+    
+    <h2>Resultado de selección</h2>
+    <div id="resultado"></div>
+
+
+    <script src="./js/proyecto.js"></script>
+
+
+</body>
+</html>
