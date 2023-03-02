@@ -15,7 +15,7 @@ class cliente {
 }
 
 
-const carteraClientes = JSON.parse(localStorage.getItem("carteraClientes")) || [];
+const carteraClientes = JSON.parse(sessionStorage.getItem("carteraClientes")) || [];
 
 let stock_melena = 5.5 ; // Stock inicial del hongo "melena de león" en el local en kilogramos
 let stock_reishi = 5.5 ; // Stock inicial del hongo "reishi" en el local en kilogramos
@@ -307,23 +307,29 @@ btnBuscar.addEventListener ("click", () => {
 	let recupero_clientes = sessionStorage.getItem("carteraClientes");
 	recupero_clientes = JSON.parse(recupero_clientes);
 
-	const resultado = recupero_clientes.filter((el) => el.apellido.includes(busqueda));
+	console.log(recupero_clientes);
+
+	const resultado = recupero_clientes.find ((el) => el.apellido == busqueda);
 	console.log(resultado);
 
 
 
 let mostrarResultado = document.createElement("p");
-mostrarResultado.innerHTML = `${resultado.value}`
+
+const clientesJson = JSON.parse(sessionStorage.getItem("carteraClientes"));
+
+console.log (clientesJson);
+
+mostrarResultado.innerHTML = `<strong>Datos del usuario:</strong> <br> <br>
+								<strong>Nombre:</strong> ${resultado.nombre} <br>
+								<strong>Apellido:</strong> ${resultado.apellido} <br>
+								<strong>Teléfono:</strong> ${resultado.telefono} <br>
+								<strong>E-Mail:</strong> ${resultado.email.toLowerCase()}`
+
 let resultadoCliente = document.getElementById("resultado_cliente");
 resultadoCliente.append(mostrarResultado);
 
 })
-
-
-
-
-
-
 
 
 
