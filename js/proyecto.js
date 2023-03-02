@@ -7,10 +7,10 @@
 //Voy a usar una clase de objetos para capturar datos de clientes
 class cliente {
 	constructor(nombre, apellido, telefono, email) {
-		this.nombre=nombre;
-		this.apellido=apellido;
+		this.nombre=nombre.toUpperCase();
+		this.apellido=apellido.toUpperCase();
 		this.telefono=telefono;
-		this.email=email;
+		this.email=email.toUpperCase();
 	}
 }
 
@@ -288,7 +288,7 @@ miFormulario.addEventListener("submit", (e) =>{
 		//Guardo la base de datos de clientes en el session storage	
 		
 		const carteraClientesJson = JSON.stringify(carteraClientes);
-		localStorage.setItem("carteraClientes", carteraClientesJson);
+		sessionStorage.setItem("carteraClientes", carteraClientesJson);
 		
 
 		Swal.fire({
@@ -308,13 +308,11 @@ btnBuscar.addEventListener ("click", () => {
 	console.log(busqueda); 
 	
 	//Recupero el JSON
-	let recupero_clientes = localStorage.getItem("carteraClientes");
+	let recupero_clientes = sessionStorage.getItem("carteraClientes");
 	recupero_clientes = JSON.parse(recupero_clientes);
 
 	const resultado = recupero_clientes.filter((el) => el.apellido.includes(busqueda));
 	console.log(resultado);
-
-
 })
 
 
@@ -328,7 +326,6 @@ btnBuscar.addEventListener ("click", () => {
 
 /*
 //BUSCAR UN CLIENTE EN LA BASE DE DATOS
-
 let btnBuscar = document.getElementById("btnBuscar")
 btnBuscar.addEventListener (Click, () => {
 	if(carteraClientes.some ((el) => el.apellido == nombre_cliente.value )==true){
@@ -350,11 +347,8 @@ btnBuscar.addEventListener (Click, () => {
 		document.body.append(container);
 }
 })
-
 /*	
-
 //Verifico la existencia de un usuario mediante eventos y DOM
-
 let botonValidar = document.getElementById("btnValidar");
 botonValidar.addEventListener("click", () => {
 	if(carteraClientes.some ((el) => el.apellido == nombre_cliente.value )==true){
