@@ -311,6 +311,12 @@ btnBuscar.addEventListener ("click", () => {
 	console.log(resultado);
 
 
+
+let mostrarResultado = document.createElement("p");
+mostrarResultado.innerHTML = `${resultado.value}`
+let resultadoCliente = document.getElementById("resultado_cliente");
+resultadoCliente.append(mostrarResultado);
+
 })
 
 
