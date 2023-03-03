@@ -41,7 +41,7 @@ boton.addEventListener("click", () => {
 		//Creo un div para notificar al usuario la opción que seleccionó y permitirle que ingrese la cantidad
 		let contenedor = document.getElementById ("resultado");
 		
-		contenedor.innerHTML = `<p>Seleccionó la opción ${opcion} para Melena de león.</p>
+		contenedor.innerHTML = `<p>Seleccionó la opción ${opcion} para <i>Melena de león</i>.</p>
 		<p>A continuación, ingrese una de las siguientes cantidades: 100, 250, 350, 500 (en gramos)<p>
 		<label for="">Cantidad: </label>
 		<input type="text" id="cant_melena">
@@ -100,7 +100,7 @@ boton.addEventListener("click", () => {
 		
 		let contenedor = document.getElementById ("resultado");
 		
-		contenedor.innerHTML = `<p>Seleccionó la opción ${opcion} para Reishi.</p>
+		contenedor.innerHTML = `<p>Seleccionó la opción ${opcion} para <i>Reishi</i>.</p>
 		<p>A continuación, ingrese una de las siguientes cantidades: 100, 250, 350, 500 (en gramos)<p>
 		<label for="">Cantidad: </label>
 		<input type="text" id="cant_reishi">
@@ -159,7 +159,7 @@ boton.addEventListener("click", () => {
 
 		let contenedor = document.getElementById ("resultado");
 
-		contenedor.innerHTML = `<p>Seleccionó la opción ${opcion} para Melena de león y Reishi.</p>
+		contenedor.innerHTML = `<p>Seleccionó la opción ${opcion} para <i>Melena de león y Reishi</i>.</p>
 		<p>A continuación, ingrese una de las siguientes cantidades para Melena de león: 100, 250, 350, 500 (en gramos)<p>
 		<label for="">Cantidad: </label>
 		<input type="text" id="cant_melena">
@@ -246,9 +246,6 @@ boton.addEventListener("click", () => {
 	}
 })
 
-
-
-
 //AGREGAR CLIENTES A LA BASE DE DATOS
 
 let miFormulario = document.getElementById("formCliente");
@@ -285,7 +282,6 @@ miFormulario.addEventListener("submit", (e) =>{
 		
 		const carteraClientesJson = JSON.stringify(carteraClientes);
 		sessionStorage.setItem("carteraClientes", carteraClientesJson);
-		
 
 		Swal.fire({
 			icon: 'success',
@@ -312,72 +308,12 @@ btnBuscar.addEventListener ("click", () => {
 	const resultado = recupero_clientes.find ((el) => el.apellido == busqueda);
 	console.log(resultado);
 
-
-
-let mostrarResultado = document.createElement("p");
-
-const clientesJson = JSON.parse(sessionStorage.getItem("carteraClientes"));
-
-console.log (clientesJson);
-
-mostrarResultado.innerHTML = `<strong>Datos del usuario:</strong> <br> <br>
+//LO MUESTRO EN UNA PÁGINA NUEVA
+document.body.innerHTML = `<strong>Datos del usuario:</strong> <br> <br>
 								<strong>Nombre:</strong> ${resultado.nombre} <br>
 								<strong>Apellido:</strong> ${resultado.apellido} <br>
 								<strong>Teléfono:</strong> ${resultado.telefono} <br>
-								<strong>E-Mail:</strong> ${resultado.email.toLowerCase()}`
-
-let resultadoCliente = document.getElementById("resultado_cliente");
-resultadoCliente.append(mostrarResultado);
+								<strong>E-Mail:</strong> ${resultado.email.toLowerCase()} <br> <br>
+								<a href=index.html>Volver</a>`
 
 })
-
-
-
-
-/*
-//BUSCAR UN CLIENTE EN LA BASE DE DATOS
-let btnBuscar = document.getElementById("btnBuscar")
-btnBuscar.addEventListener (Click, () => {
-	if(carteraClientes.some ((el) => el.apellido == nombre_cliente.value )==true){
-		
-		let container = document.getElementById("resultado")
-		container.innerHTML = `<p>El usuario ${nombre_cliente.value} ya existe!</p>` //no puedo hacer un display de los datos del cliente para mostrar que existe. No me toma la constante persona porque supongo que tiene que existir localmente
-		document.body.append(container);
-		
-		//Recupero el JSON
-		let recupero_clientes = localStorage.getItem("carteraClientes");
-		console.log(recupero_clientes);
-		recupero_clientes = JSON.parse(recupero_clientes);
-		console.log(recupero_clientes)
-		
-	}
-	else{
-		let container = document.getElementById("resultado")
-		container.innerHTML = `<p>No se encontró al cliente ${nombre_cliente.value}</p>` //no puedo hacer un display de los datos del cliente para mostrar que existe. No me toma la constante persona porque supongo que tiene que existir localmente
-		document.body.append(container);
-}
-})
-/*	
-//Verifico la existencia de un usuario mediante eventos y DOM
-let botonValidar = document.getElementById("btnValidar");
-botonValidar.addEventListener("click", () => {
-	if(carteraClientes.some ((el) => el.apellido == nombre_cliente.value )==true){
-		
-		let container = document.getElementById("resultado")
-		container.innerHTML = `<p>El usuario ${nombre_cliente.value} ya existe!</p>` //no puedo hacer un display de los datos del cliente para mostrar que existe. No me toma la constante persona porque supongo que tiene que existir localmente
-		document.body.append(container);
-		
-		//Recupero el JSON
-		let recupero_clientes = localStorage.getItem("carteraClientes");
-		console.log(recupero_clientes);
-		recupero_clientes = JSON.parse(recupero_clientes);
-		console.log(recupero_clientes)
-		
-	}
-	else{
-		let container = document.getElementById("resultado")
-		container.innerHTML = `<p>No se encontró al cliente ${nombre_cliente.value}</p>` //no puedo hacer un display de los datos del cliente para mostrar que existe. No me toma la constante persona porque supongo que tiene que existir localmente
-	document.body.append(container);
-}
-})
-*/
