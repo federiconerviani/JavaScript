@@ -309,17 +309,24 @@ btnBuscar.addEventListener ("click", () => {
 	console.log(recupero_clientes);
 
 	//Levanto el apellido buscado
-	const resultado = recupero_clientes.find ((el) => el.apellido == busqueda);
+	const resultado = recupero_clientes?.find ((el) => el.apellido == busqueda) || "El usuario no existe";
 	console.log(resultado);
+		
+		if (resultado == "El usuario no existe"){
+			document.body.innerHTML = `<p>El apellido <strong>${busqueda}</strong> no se encuentra registrado en nuestra base de datos. <br><br>
+										<a href=index.html>Volver</a>`
+		}
+		else {
 
-//MUESTRO LOS DATOS EN UNA PÁGINA NUEVA
-document.body.innerHTML = `<strong>Datos del usuario:</strong> <br> <br>
-								<strong>Nombre:</strong> ${resultado.nombre} <br>
-								<strong>Apellido:</strong> ${resultado.apellido} <br>
-								<strong>Teléfono:</strong> ${resultado.telefono} <br>
-								<strong>E-Mail:</strong> ${resultado.email.toLowerCase()} <br> <br>
-								<a href=index.html>Volver</a>`
-
+			//MUESTRO LOS DATOS EN UNA PÁGINA NUEVA
+			document.body.innerHTML = `<strong>Datos del usuario:</strong> <br> <br>
+			<strong>Nombre:</strong> ${resultado.nombre} <br>
+			<strong>Apellido:</strong> ${resultado.apellido} <br>
+			<strong>Teléfono:</strong> ${resultado.telefono} <br>
+			<strong>E-Mail:</strong> ${resultado?.email?.toLowerCase()} <br> <br>
+			<a href=index.html>Volver</a>`
+		}
+	
 })
 
 //HAGO UN BANNER DEL CLIMA
@@ -327,13 +334,14 @@ document.body.innerHTML = `<strong>Datos del usuario:</strong> <br> <br>
 //API KEY DEL CLIMA openweathermap.org
 let key = "f6c1c8ee2dce8a8488c7e48b5970b3c3";
 
-fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&units=metric&lang=es&mode=html&appid="+key)
+
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&units=metric&lang=es&appid="+key)
 	.then(response => response.json())
 	.then(data => {
+		console.log(data)
 			let clima = document.getElementById("clima");
-				clima.innerHTML = `${data.weather.icon}
-									${data.weather.description}
-									${data.main.temp}
-									${data.name}
-									${data.timezone}`
+				clima.innerHTML = `
+									<strong>Clima:</strong> ${data.weather[0].description}
+									<strong>Temperatura:</strong> ${data.main.temp}°C
+									<strong>Ciudad:</strong> ${data.name}`
 	})
