@@ -220,6 +220,8 @@ boton.addEventListener("click", () => {
 								showConfirmButton: false,
 								timer: 2500,
 							})
+
+							
 					
 						})
 						
@@ -296,19 +298,21 @@ miFormulario.addEventListener("submit", (e) =>{
 
 let btnBuscar = document.getElementById("btnBuscar");
 btnBuscar.addEventListener ("click", () => {
+	//capturo el apellido ingresado por input
 	let busqueda = document.getElementById ("buscar_apellido").value.toUpperCase();
 	console.log(busqueda); 
 	
-	//Recupero el JSON
+	//Recupero el JSON almacenado en la session
 	let recupero_clientes = sessionStorage.getItem("carteraClientes");
 	recupero_clientes = JSON.parse(recupero_clientes);
 
 	console.log(recupero_clientes);
 
+	//Levanto el apellido buscado
 	const resultado = recupero_clientes.find ((el) => el.apellido == busqueda);
 	console.log(resultado);
 
-//LO MUESTRO EN UNA PÁGINA NUEVA
+//MUESTRO LOS DATOS EN UNA PÁGINA NUEVA
 document.body.innerHTML = `<strong>Datos del usuario:</strong> <br> <br>
 								<strong>Nombre:</strong> ${resultado.nombre} <br>
 								<strong>Apellido:</strong> ${resultado.apellido} <br>
@@ -317,3 +321,19 @@ document.body.innerHTML = `<strong>Datos del usuario:</strong> <br> <br>
 								<a href=index.html>Volver</a>`
 
 })
+
+//HAGO UN BANNER DEL CLIMA
+
+//API KEY DEL CLIMA openweathermap.org
+let key = "f6c1c8ee2dce8a8488c7e48b5970b3c3";
+
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&units=metric&lang=es&mode=html&appid="+key)
+	.then(response => response.json())
+	.then(data => {
+			let clima = document.getElementById("clima");
+				clima.innerHTML = `${data.weather.icon}
+									${data.weather.description}
+									${data.main.temp}
+									${data.name}
+									${data.timezone}`
+	})
