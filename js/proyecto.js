@@ -64,7 +64,9 @@ boton.addEventListener("click", () => {
 						<button id="guardar">Guardar</button>`;
 						document.body.append(cantidad);
 						
+						console.log("Cantidad melena");
 						console.log (cant_melena);
+						console.log("Stock melena restante");
 						console.log (stock_melena);
 						
 						ventas += 1;
@@ -78,8 +80,8 @@ boton.addEventListener("click", () => {
 								position: 'center',
 								icon: 'success',
 								title: 'Se ha registrado el pedido',
-								showConfirmButton: false,
-								timer: 2500,
+								html: `<strong>Ventas del día:</strong> ${ventas}`,
+								confirmButtonText: `<a style="text-decoration:none;color:black" href=index.html>Aceptar</a>`
 							})
 							
 						})
@@ -123,7 +125,9 @@ boton.addEventListener("click", () => {
 											 <button id="guardar">Guardar</button>`;
 						document.body.append(cantidad);
 
+						console.log("Cantidad Reishi");
 						console.log (cant_reishi);
+						console.log("Stock Reishi restante");
 						console.log (stock_reishi);
 
 						//SWEET ALERT PARA MOSTRAR UN RESUMEN Y CONFIRMACIÓN DE LOS DATOS REGISTRADOS
@@ -135,8 +139,8 @@ boton.addEventListener("click", () => {
 								position: 'center',
 								icon: 'success',
 								title: 'Se ha registrado el pedido',
-								showConfirmButton: false,
-								timer: 2500,
+								html: `<strong>Ventas del día:</strong> ${ventas}`,
+								confirmButtonText: `<a style="text-decoration:none;color:black" href=index.html>Aceptar</a>`
 							})
 
 						})
@@ -174,6 +178,11 @@ boton.addEventListener("click", () => {
 			{
 				kiloAgramo_melena(stock_melena,cant_melena);
 
+				console.log("Cantidad melena");
+				console.log(cant_melena);
+				console.log("Stock melena restante");
+				console.log(stock_melena);
+
 				let cantidad = document.createElement("div");
 						cantidad.innerHTML = `<p>Se ha registrado con éxito la selección: <br><br>
 											 <strong>Cantidad seleccionada:</strong> ${cant_melena} g <br> 
@@ -196,7 +205,9 @@ boton.addEventListener("click", () => {
 					{
 						kiloAgramo_reishi(stock_reishi,cant_reishi);
 						
+						console.log("Cantidad melena");
 						console.log (cant_reishi);
+						console.log("Stock melena restante");
 						console.log (stock_reishi);
 						
 						let cantidad = document.createElement("div");
@@ -217,8 +228,8 @@ boton.addEventListener("click", () => {
 								position: 'center',
 								icon: 'success',
 								title: 'Se ha registrado el pedido',
-								showConfirmButton: false,
-								timer: 2500,
+								html: `<strong>Ventas del día:</strong> ${ventas}`,
+								confirmButtonText: `<a style="text-decoration:none;color:black" href=index.html>Aceptar</a>`
 							})
 
 							
@@ -264,6 +275,8 @@ miFormulario.addEventListener("submit", (e) =>{
 		Swal.fire({
 			icon: 'error',
 			title: '¡El cliente ya existe!',
+			showConfirmButton: false,
+			timer: 2500,
 		  });
 
 		  document.getElementById ("formCliente").reset();
@@ -288,6 +301,8 @@ miFormulario.addEventListener("submit", (e) =>{
 		Swal.fire({
 			icon: 'success',
 			title: '¡El cliente ha sido registrado!',
+			showConfirmButton: false,
+			timer: 2500,
 		  });
 
 		document.getElementById ("formCliente").reset();
@@ -338,7 +353,10 @@ let key = "f6c1c8ee2dce8a8488c7e48b5970b3c3";
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&units=metric&lang=es&appid="+key)
 	.then(response => response.json())
 	.then(data => {
+
+		console.log("Info del clima")
 		console.log(data)
+
 			let clima = document.getElementById("clima");
 				clima.innerHTML = `
 									<strong>Clima:</strong> ${data.weather[0].description}
