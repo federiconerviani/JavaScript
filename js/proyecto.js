@@ -20,7 +20,7 @@ const carteraClientes = JSON.parse(sessionStorage.getItem("carteraClientes")) ||
 let stock_melena = 5.5 ; // Stock inicial del hongo "melena de león" en el local en kilogramos
 let stock_reishi = 5.5 ; // Stock inicial del hongo "reishi" en el local en kilogramos
 
-let ventas=0; //CONTADOR DE LAS VENTAS DEL DÍA
+let ventas = JSON.parse(sessionStorage.getItem("ventas")) || []; //CONTADOR DE LAS VENTAS DEL DÍA
 
 function kiloAgramo_melena (x,y){
 	stock_melena = Number ((x - y*0.001).toFixed(2));
@@ -70,6 +70,9 @@ boton.addEventListener("click", () => {
 						console.log (stock_melena);
 						
 						ventas += 1;
+
+						const ventasJSON = JSON.stringify(ventas);
+							sessionStorage.setItem("ventas", ventasJSON);
 						
 						//SWEET ALERT PARA MOSTRAR UN RESUMEN Y CONFIRMACIÓN DE LOS DATOS REGISTRADOS
 						
@@ -82,6 +85,10 @@ boton.addEventListener("click", () => {
 								title: 'Se ha registrado el pedido',
 								html: `<strong>Ventas del día:</strong> ${ventas}`,
 								confirmButtonText: `<a style="text-decoration:none;color:black" href=index.html>Aceptar</a>`
+								.then((result) => {
+									if (result.isConfirmed) {
+										
+									}}),
 							})
 							
 						})
