@@ -84,12 +84,13 @@ boton.addEventListener("click", () => {
 								icon: 'success',
 								title: 'Se ha registrado el pedido',
 								html: `<strong>Ventas del día:</strong> ${ventas}`,
-								confirmButtonText: `<a style="text-decoration:none;color:black" href=index.html>Aceptar</a>`
-								.then((result) => {
-									if (result.isConfirmed) {
-										
-									}}),
+								confirmButtonText: `<a style="text-decoration:none;color:black">Aceptar</a>`,
 							})
+							.then((value) => {
+								if(value){
+								  window.location.href = "index.html";
+								}
+							  })
 							
 						})
 						
@@ -147,8 +148,13 @@ boton.addEventListener("click", () => {
 								icon: 'success',
 								title: 'Se ha registrado el pedido',
 								html: `<strong>Ventas del día:</strong> ${ventas}`,
-								confirmButtonText: `<a style="text-decoration:none;color:black" href=index.html>Aceptar</a>`
+								confirmButtonText: `<a style="text-decoration:none;color:black">Aceptar</a>`,
 							})
+							.then((value) => {
+								if(value){
+								  window.location.href = "index.html";
+								}
+							  })
 
 						})
 
@@ -236,8 +242,13 @@ boton.addEventListener("click", () => {
 								icon: 'success',
 								title: 'Se ha registrado el pedido',
 								html: `<strong>Ventas del día:</strong> ${ventas}`,
-								confirmButtonText: `<a style="text-decoration:none;color:black" href=index.html>Aceptar</a>`
+								confirmButtonText: `<a style="text-decoration:none;color:black">Aceptar</a>`,
 							})
+							.then((value) => {
+								if(value){
+								  window.location.href = "index.html";
+								}
+							  })
 
 							
 					
