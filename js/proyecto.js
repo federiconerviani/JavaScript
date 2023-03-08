@@ -1,8 +1,19 @@
 //CONTROL DE STOCK para un comercio que vende hongos deshidratados
-//A medida que se van registrando ventas, se tiene que ir almacenando una lista de las mismas donde se
-//muestre el nombre y apellido del comprador, el tipo de hongo que compró, la cantidad que compró y el stock parcial y total
-//del local. Se usa un if para advertir al vendedor que se debe reponer stock del producto lo más pronto posible.
-//Se usa un for para contar las ventas.
+/*EL PROGRAMA CUENTA CON UN MÓDULO PARA AGREGAR CLIENTES A LA BASE DE DATOS.
+ESTA SE ALMACENA A LA VEZ EN LA SESSION STORAGE (uso la session para que sea más
+	fácil reiniciar los contadores y demás info almacenada). AL INGRESAR UN NUEVO CLIENTE
+	EL PROGRAMA VALIDA LOS DATOS POR NOMBRE Y APELLIDO PARA NO CREAR DUPLICADOS.
+	EL SIGUIENTE MÓDULO SIRVE PARA BUSCAR UN CLIENTE Y LEVANTAR SUS DATOS DE LA SESSION.
+	EL MÓDULO DE CARGA DE PEDIDO TIENE DOS INSTANCIAS. EN EL PRIMER INPUT SE INGRESA UNA DE LAS 3 OPCIONES
+	MOSTRADAS EN LA LISTA. A CONTINUACIÓN, SE DEBE INGRESAR UNO DE 4 VALORES POSIBLES.
+	LUEGO DEL INGRESO SE MUESTRA UN PEQUEÑO RESUMEN DE LA CARGA DE DATOS Y EL STOCK RESTANTE EN ALMACEN.
+	FINALMENTE, EL BOTÓN GUARDAR MUESTRA UN MENSAJE DE CONFIRMACIÓN CON LA CANTIDAD DE VENTAS REGISTRADAS EN ESE DÍA
+	Y AL HACER CLICK EN ACEPTAR DEBE RECARGAR LA PÁGINA PARA UN NUEVO INGRESO.
+	SI EN CUALQUIERA DE LAS DOS INSTANCIAS SE INGRESARA ALGO QUE NO CORRESPONDA A LAS OPCIONES BRINDADAS
+	SE MUESTRA UN MENSAJE DE ERROR.
+	UNA DE LAS MEJORAS PRINCIPALES A REALIZARLE AL PROGRAMA SERÍA QUE, ANTES DE CARGAR UN PEDIDO, SE INGRESE EL CLIENTE QUE REALIZA EL PEDIDO. Y, 
+	AL MOMENTO DE TERMINAR DE CARGAR EL PEDIDO,SE MUESTRE EN EL RESUMEN.
+*/
 
 //Voy a usar una clase de objetos para capturar datos de clientes
 class cliente {
@@ -59,6 +70,7 @@ boton.addEventListener("click", () => {
 						
 						let cantidad = document.createElement("div");
 						cantidad.innerHTML = `<p>Se ha registrado con éxito la selección: <br><br>
+						<strong>Producto seleccionado:</strong> Melena de león <br>
 						<strong>Cantidad seleccionada:</strong> ${cant_melena} g <br> 
 						<strong>Stock restante Melena:</strong> ${stock_melena} kg <br><br>
 						<button id="guardar">Guardar</button>`;
@@ -128,9 +140,10 @@ boton.addEventListener("click", () => {
 						
 						let cantidad = document.createElement("div");
 						cantidad.innerHTML = `<p>Se ha registrado con éxito la selección: <br><br>
-											 <strong>Cantidad seleccionada:</strong> ${cant_reishi} g <br> 
-											 <strong>Stock restante Reishi:</strong> ${stock_reishi} kg <br><br>
-											 <button id="guardar">Guardar</button>`;
+											<strong>Producto seleccionado:</strong> Reishi <br>
+											<strong>Cantidad seleccionada:</strong> ${cant_reishi} g <br> 
+											<strong>Stock restante Reishi:</strong> ${stock_reishi} kg <br><br>
+											<button id="guardar">Guardar</button>`;
 						document.body.append(cantidad);
 
 						console.log("Cantidad Reishi");
@@ -198,8 +211,9 @@ boton.addEventListener("click", () => {
 
 				let cantidad = document.createElement("div");
 						cantidad.innerHTML = `<p>Se ha registrado con éxito la selección: <br><br>
-											 <strong>Cantidad seleccionada:</strong> ${cant_melena} g <br> 
-											 <strong>Stock restante Melena:</strong> ${stock_melena} kg <br><br>
+											<strong>Producto seleccionado:</strong> Melena de león <br>
+											<strong>Cantidad seleccionada:</strong> ${cant_melena} g <br> 
+											<strong>Stock restante Melena:</strong> ${stock_melena} kg <br><br>
 											 A continuación, ingrese la cantidad de Reishi: 100, 250, 350, 500 (en gramos)<br><br>
 											 Cantidad: <input id="cant_reishi"></input>
 											 <button id="boton_registrar2">Registrar</button>`;
@@ -225,9 +239,10 @@ boton.addEventListener("click", () => {
 						
 						let cantidad = document.createElement("div");
 						cantidad.innerHTML = `<p>Se ha registrado con éxito la selección: <br><br>
-											 <strong>Cantidad seleccionada:</strong> ${cant_reishi} g <br> 
-											 <strong>Stock restante Reishi:</strong> ${stock_reishi} kg <br><br>
-											 <button id="guardar">Guardar</button>`;
+											<strong>Producto seleccionado:</strong> Reishi <br>
+											<strong>Cantidad seleccionada:</strong> ${cant_reishi} g <br> 
+											<strong>Stock restante Reishi:</strong> ${stock_reishi} kg <br><br>
+											<button id="guardar">Guardar</button>`;
 						document.body.append(cantidad);
 
 						ventas += 1;
