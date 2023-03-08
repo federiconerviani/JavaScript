@@ -270,7 +270,7 @@ miFormulario.addEventListener("submit", (e) =>{
 	let email = document.getElementById ("email_cliente").value;
 	
 	//VERIFICO QUE EL CLIENTE A REGISTRAR NO EXISTA EN LA BASE DE DATOS	
-	if(carteraClientes.some ((el) => el.nombre == nombre )==true && carteraClientes.some ((el) => el.apellido == apellido )==true)
+	if(carteraClientes.some ((el) => el.nombre == nombre.toUpperCase() )==true && carteraClientes.some ((el) => el.apellido == apellido.toUpperCase() )==true)
 	{
 		Swal.fire({
 			icon: 'error',
